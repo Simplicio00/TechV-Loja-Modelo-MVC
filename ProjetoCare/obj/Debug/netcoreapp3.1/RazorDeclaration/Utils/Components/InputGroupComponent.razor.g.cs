@@ -13,21 +13,21 @@ namespace ProjetoCare.Utils.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\Acer\Desktop\Código\projeto-Care\ProjetoCare\ProjetoCare\_Imports.razor"
+#line 1 "C:\Users\Acer\Desktop\Código\TechV-Loja-Modelo-MVC\ProjetoCare\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Acer\Desktop\Código\projeto-Care\ProjetoCare\ProjetoCare\_Imports.razor"
+#line 2 "C:\Users\Acer\Desktop\Código\TechV-Loja-Modelo-MVC\ProjetoCare\_Imports.razor"
 using Blazored.Modal.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Acer\Desktop\Código\projeto-Care\ProjetoCare\ProjetoCare\_Imports.razor"
+#line 3 "C:\Users\Acer\Desktop\Código\TechV-Loja-Modelo-MVC\ProjetoCare\_Imports.razor"
 using Blazored.Modal;
 
 #line default

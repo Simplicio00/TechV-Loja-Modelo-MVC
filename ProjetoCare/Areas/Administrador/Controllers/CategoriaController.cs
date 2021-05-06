@@ -124,8 +124,6 @@ namespace ProjetoCare.Areas.Administrador.Controllers
         }
 
 
-        [RouteRefererSecurity]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExcluirCategoria(int id)
         {
             Categoria categoria = await _cat.SearchById(id);

@@ -130,6 +130,8 @@ namespace ProjetoCare.Controllers
 				});
 
 
+				TempData["MSGS"] = "Cadastrado com sucesso";
+
 				return RedirectToAction(nameof(Index));
 
 			}

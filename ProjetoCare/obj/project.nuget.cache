@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UrcN9R0WhTL6RWeKjIOwk9WoWAJwcHbBakLjr5NdGF6zgJhUqaQ8LG7oPWyCKwD51eAX+SN9Ccqz0ry1VcpGdw==",
+  "dgSpecHash": "eIGExyNJjcAYA6I6MH7B4yGts+9HmY0q3cH668opn/SgDzCdqCv3u41KsQIt8iO4IZwKS3Ukp4T8Jqnp3Q3WQQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\ProjetoCare.csproj",
+  "projectFilePath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\ProjetoCare.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Acer\\.nuget\\packages\\bitmiracle.libtiff.net\\2.4.584.1\\bitmiracle.libtiff.net.2.4.584.1.nupkg.sha512",
     "C:\\Users\\Acer\\.nuget\\packages\\blazored.modal\\6.0.1\\blazored.modal.6.0.1.nupkg.sha512",

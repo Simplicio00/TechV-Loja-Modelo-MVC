@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\ProjetoCare.csproj": {}
+    "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\ProjetoCare.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj": {
+    "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj": {
       "version": "1.0.0-beta6",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj",
         "projectName": "BoletoNetCore",
-        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj",
+        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -78,14 +78,14 @@
         }
       }
     },
-    "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj": {
+    "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj",
         "projectName": "Classes",
-        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj",
+        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -137,14 +137,14 @@
         }
       }
     },
-    "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\Data.csproj": {
+    "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -166,8 +166,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj": {
-                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj"
+              "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj": {
+                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj"
               }
             }
           }
@@ -212,14 +212,14 @@
         }
       }
     },
-    "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\ProjetoCare.csproj": {
+    "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\ProjetoCare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\ProjetoCare.csproj",
+        "projectUniqueName": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\ProjetoCare.csproj",
         "projectName": "ProjetoCare",
-        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\ProjetoCare.csproj",
+        "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\ProjetoCare.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\ProjetoCare\\obj\\",
+        "outputPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\ProjetoCare\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -241,14 +241,14 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj": {
-                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj"
+              "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj": {
+                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\BoletoNetCore-master\\BoletoNetCore\\BoletoNetCore.csproj"
               },
-              "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj": {
-                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Classes\\Classes.csproj"
+              "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj": {
+                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Classes\\Classes.csproj"
               },
-              "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\projeto-Care\\ProjetoCare\\Data\\Data.csproj"
+              "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\Acer\\Desktop\\Código\\TechV-Loja-Modelo-MVC\\Data\\Data.csproj"
               }
             }
           }

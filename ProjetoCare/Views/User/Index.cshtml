@@ -19,6 +19,11 @@
 			{
 				<span class="alert-danger" style="margin:13px;">@TempData["MSGE"].ToString()</span>
 			}
+
+			@if (TempData["MSGS"] != null)
+			{
+				<span class="alert-danger" style="margin:13px;">@TempData["MSGS"].ToString()</span>
+			}
 		<button style="margin-top: 10px; height:30px; width:90px;border:none;background-color:black;color:white;">Entrar</button>
 
 		<p style="color: white;margin-top:10px;">Não possui cadastro? <a asp-action="cadastrar" asp-controller="user" style="text-align:center;font-size:14px;color:white;"> Cadastrar </a> </p> 
