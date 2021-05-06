@@ -1,0 +1,116 @@
+﻿@model ProdutoAtualizacaoViewModel 
+
+@{
+	ViewData["Title"] = "Produto";
+	List<SelectListItem> StatusEstoque = ProjetoCare.Utils.DefaultValue.DefaultStrings.EstoqueDefaultProperty.ToList();
+}
+
+
+
+	<section style="background-color:gray; height:100%; width:100%; display:flex; justify-content:center;padding:15px; flex-direction:column;align-items:center;">
+
+		<form asp-route-id="@Model.IdProduto" enctype="multipart/form-data" method="post" asp-action="cadastrarImagem" style="margin:10px; width:70%; display:flex; justify-content:center; flex-direction:column; align-items:center; height:190px; background-color:white;">
+			<h3>Cadastrar uma nova imagem</h3>
+			<input type="file" name="img" style="width:90%;" />
+			<button type="submit" class="dangerbtn delete" style="height: 70px; width: 160px; background-color: #007bff; color: white; display: flex; justify-content: center; align-items: center; margin-left: 5px; border: none; border-radius: 5px;"> Cadastrar imagem </button>
+		</form>
+
+		<div style="width: 70%; text-align: center; display: flex; justify-content: center; flex-direction: column; align-items: center;margin-bottom:10px;margin-top:10px;">
+			@if (Model.Imagens.ToList() != null)
+			{
+				foreach (var item in Model.Imagens.ToList())
+				{
+					<img src="https://localhost:5001/pdts/@item.ImagemCaminho" style="width: 50%;" class="card-img-top" alt="..." />
+					<a asp-route-id="@item.IdImagem" asp-route-idproduto="@Model.IdProduto" asp-action="deletarimagem" asp-controller="produto" class="dangerbtn delete" type="submit" style="height:40px;width:90px;background-color:#007bff;color:white;display:flex;justify-content:center;align-items:center;margin-left:5px;border:none; margin-bottom:15px; border-radius:5px;"> Apagar </a>
+				}
+			}
+		</div>
+
+		<form method="POST" asp-action="produto" asp-controller="produto" class="card" style="width: 70%;text-align:center;display:flex;justify-content:center; flex-direction:column; align-items:center;">
+			
+
+			<div style="width:90%;display:flex; align-items:center; justify-content:center; flex-direction:column;padding:10px;">
+				<h3 style="margin: 10px;">Nome do produto</h3>
+				<input asp-for="@Model.NomeProduto" value="@Model.NomeProduto" style="width:90%; height:30px;" />
+
+				<input type="hidden" asp-for="@Model.IdProduto" />
+				<input type="hidden" asp-for="@Model.IdEstoque" />
+
+				<h3 style="margin: 10px;">Descrição</h3>
+				<textarea asp-for="@Model.Descricao" style="width:100%;resize: none; height:300px; padding:10px;">
+					@Model.Descricao
+				</textarea>
+
+			</div>
+			<ul class="list-group list-group-flush" style="padding: 5px;">
+				<li style="margin-top: 5px; margin-bottom:5px;" class="list-group-item">
+					<h3>Categoria</h3>
+				</li>
+				<li class="list-group-item">
+					<select asp-items="@ViewBag.Categorias" asp-for="IdCategoria" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:90%; height:90%;" id="inlineFormCustomSelectPref">
+					</select>
+				</li>
+				<li class="list-group-item" style="margin-top: 5px; margin-bottom:5px;">
+					<h3>Situação do estoque</h3>
+				</li>
+				<li class="list-group-item">
+					<select asp-items="@StatusEstoque.ToList()" asp-for="@Model.EstoqueStatus" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:90%; height:90%;" id="inlineFormCustomSelectPref">
+					</select>
+				</li>
+				<li class="list-group-item">
+					Quantidade
+				</li>
+				<li class="list-group-item">
+					<input type="number" asp-for="@Model.Quantidade" value="@Model.Quantidade" />
+				</li>
+
+
+				<li style="margin-top: 5px; margin-bottom:5px;" class="list-group-item">
+					<h3>Preço</h3>
+				</li>
+				<li class="list-group-item">
+					R$ <input asp-for="@Model.Preco" value="@Model.Preco" />
+				</li>
+
+				
+
+				<li style="margin-top: 5px; margin-bottom:5px;" class="list-group-item">
+					<h3>Dimensões</h3>
+				</li>
+
+				<li class="list-group-item">
+					<label> Largura (CM)</label>
+				</li>
+				<li class="list-group-item">
+					<input asp-for="@Model.Largura" value="@Model.Largura" />
+				</li>
+
+				<li class="list-group-item">
+					<label> Altura (CM)</label>
+				</li>
+				<li class="list-group-item">
+					<input asp-for="@Model.Altura" value="@Model.Altura" />
+				</li>
+				<li class="list-group-item">
+					<label> Comprimento (CM) </label>
+				</li>
+
+				<li class="list-group-item">
+					<input asp-for="@Model.Comprimento" value="@Model.Comprimento" />
+				</li>
+
+				<li class="list-group-item">
+					<label> Peso (Gramas)</label>
+				</li>
+
+				<li class="list-group-item">
+					<input asp-for="@Model.Peso" value="@Model.Peso" />
+				</li>
+
+			</ul>
+			<div class="card-body">
+				<button id="#btn-cd" type="submit" style=" height:70px; width:160px;border:none; background-color:#007bff; color:white;border-radius:5px;"> Atualizar </button>
+			</div>
+		</form>
+
+	</section>

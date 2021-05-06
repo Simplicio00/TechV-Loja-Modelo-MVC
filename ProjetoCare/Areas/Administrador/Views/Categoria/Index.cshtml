@@ -1,0 +1,136 @@
+@model List<Categoria>;
+@{
+	ViewData["Title"] = "Categoria";
+
+	Pager pager = new Pager();
+	int pageNO = 0;
+
+	if(ViewBag.Pager != null){
+		pager = ViewBag.Pager;
+		pageNO = pager.CurrentPage;
+	}
+
+}
+
+@if (TempData["MSG_1"] != null)
+{
+	<span class="text-success span-categoria">@TempData["MSG_1"].ToString()</span>
+}
+
+
+
+@if (TempData["MSG_2"] != null)
+{
+	<span class="text-danger span-categoria">@TempData["MSG_2"].ToString()</span>
+}
+
+<form method="post" asp-action="cadastrar" asp-controller="categoria" class="container-fluid" style="margin:10px; display:flex; height:100px; align-items:center; justify-content:center;  width:90%;">
+	<div style="width:80%; height:100px; display:flex; align-items:center; justify-content:center; background-color:gray;">
+		<div style="width: 80%; height:100px; display:flex;justify-content:flex-end; align-items:center; padding:5px;">
+			<div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-paperclip" aria-hidden="true"></span></div>
+			<input style="width: 90%; height:40px;padding:4px;" name="valor"  placeholder="Cadastrar nova categoria" />
+			<button type="submit" style="height:40px;width:30px;background-color:#007bff;color:white;display:flex;justify-content:center;align-items:center;margin-left:5px;border:none;"> > </button>
+		</div>
+	</div>
+</form>
+
+
+<div class="container-fluid" style="margin-top:10px;margin-bottom:60px;text-align: center; padding:10px;display:flex;height:70%; flex-direction:column;justify-content:center; align-items:center;">
+
+	<div class="container">
+		@if(pager.TotalPages > 0){
+			<ul class="pagination justify-content-end">
+
+				@if(pager.CurrentPage > 1){
+
+				}
+
+				@for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+				{
+					<li class="page-item @(pge == pager.CurrentPage ? "active" : "")" >
+						<a class="page-link" asp-controller="categoria" asp-action="index" asp-route-pg="@pge">@pge</a>
+					</li>
+				}
+
+			</ul>
+		}
+	</div>
+
+	<table class="table" style="margin: 10px; background-color:gray; opacity:1;color:white; margin-bottom:60px;">
+		<thead>
+			<tr>
+				<th scope="col"><a type="button" asp-action="index" asp-route-listagem="@DefaultStrings.PerAlfaProperty" style="color: white;" > Categoria </a></th>
+				<th scope="col"><a type="button" asp-action="index" asp-route-listagem="@DefaultStrings.PerQuantityProperty" style="color: white;" > Produtos </a></th>
+				<th scope="col">Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@* id="myBtn" *@
+
+
+			@foreach (var item in Model)
+			{
+
+				<tr>
+					<th scope="row">
+						@item.NomeCategoria
+					</th>
+					<td>
+						@item.Produto.Count()
+					</td>
+
+					<td>
+						<a type="button" asp-action="categoriaDetalhe" asp-route-id="@item.IdCategoria" class="btn btn-primary"> Detalhes </a>
+						<a type="button" style="background-color:darkred;border:none;" asp-action="excluircategoria" asp-route-id="@item.IdCategoria" class="btn btn-primary"> Remover </a>
+
+					</td>
+				</tr>
+
+			}
+
+		</tbody>
+	</table>
+
+
+</div>
+
+
+
+
+<script>
+
+	// **********************  lembrete
+	//ao clicar, os dados vindos da requisição serão enviados (de alguma forma)
+	//para o modal (somente os dados da categoria selecionada)
+
+
+
+
+	var modal = document.getElementById("myModal");
+
+	//// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	//// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	var cl = document.getElementsByClassName("textclass")[0];
+
+	//// When the user clicks on the button, open the modal
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
+
+	//// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
+
+	//// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>

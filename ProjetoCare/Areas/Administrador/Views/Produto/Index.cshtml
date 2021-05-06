@@ -1,0 +1,86 @@
+@model List<Produto>
+
+@{
+	ViewData["Title"] = "produto";
+
+	Pager pager = new Pager();
+	int pageNO = 0;
+
+	if(ViewBag.Pager != null){
+		pager = ViewBag.Pager;
+		pageNO = pager.CurrentPage;
+	}
+}
+
+<form method="GET" asp-action="index" asp-controller="Produto" class="container-fluid" style="margin:10px; display:flex; height:100px; align-items:center; justify-content:center;  width:90%;">
+	<div style="width:80%; height:100px; display:flex; align-items:center; justify-content:center; background-color:gray;">
+			<a asp-action="cadastrar" type="button" style="height:40px;width:100px;background-color:#007bff;color:white;border-radius:5px;display:flex;justify-content:center;align-items:center;"> Cadastrar </a>
+		
+		<div style="width: 80%; height:100px; display:flex;justify-content:flex-end; align-items:center; padding:5px;">
+			<i class="fas fa-search" style="margin-right: 5px;"></i>
+			<input style="width: 90%; height:40px;padding:4px;" name="valor"  placeholder="Pesquisar produto" />
+			<button type="submit" style="height:40px;width:30px;background-color:#007bff;color:white;display:flex;justify-content:center;align-items:center;margin-left:5px;border:none;"> > </button>
+		</div>
+	</div>
+</form>
+
+
+<div class="container-fluid" style="margin-top:20px; margin-bottom:30px;text-align: center; padding:10px;display:flex;height:80%; flex-direction:column;justify-content:center; align-items:center;">
+
+	<div class="container">
+		@if(pager.TotalPages > 0){
+			<ul class="pagination justify-content-end">
+
+				@for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+				{
+					<li class="page-item @(pge == pager.CurrentPage ? "active" : "")" >
+						<a class="page-link" asp-controller="produto" asp-action="index" asp-route-pg="@pge">@pge</a>
+					</li>
+				}
+
+			</ul>
+		}
+	</div> 
+
+	<table class="table" style="margin: 10px; background-color:gray; opacity:1;color:white; margin-bottom:60px;">
+		<thead>
+			<tr>
+				<th scope="col"><a type="button" asp-action="index" style="color: white;" > Produto </a></th>
+				<th scope="col"><a type="button" asp-action="index" style="color: white;" > Estoque </a></th>
+				<th scope="col"><a type="button" asp-action="index" style="color: white;" > Requisições </a></th>
+				<th scope="col"><a type="button" asp-action="index" style="color: white;" > Categoria </a></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@* id="myBtn" *@
+
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<th scope="row">
+						<a  asp-action="produto" asp-controller="produto" asp-route-id="@item.IdProduto" style="font-weight:300;color: white;">
+							@item.NomeProduto
+						</a>
+					</th>
+					<td  style="font-weight:300;color: white;">
+						@item.IdEstoqueNavigation.Status
+					</td>
+					<th scope="row"  style="font-weight:300;color: white;">
+						@*@item.HistoricoCompra.Count*@
+						0
+					</th>
+					<th scope="row"  style="font-weight:300;color: white;">
+						@item.IdCategoriaNavigation.NomeCategoria
+					</th>
+				</tr>
+
+			}
+
+		</tbody>
+	</table>
+
+
+
+</div>

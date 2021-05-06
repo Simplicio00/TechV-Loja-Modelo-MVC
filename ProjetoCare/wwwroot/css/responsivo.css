@@ -1,0 +1,56 @@
+﻿
+
+/* typical phone screen resolution */
+@media only screen and (max-width : 1000px) {
+
+    #cartinfo {
+        font-size: 8px;
+        padding: 15px;
+    }
+    #cartinfo p {
+        display: none;
+    }
+    #cartinfo img {
+        display: none !important;
+    }
+
+    #thdhome-upper{
+        flex-direction: column;
+    }
+
+    #thdhome-left {
+        width: 100% !important;
+    }   
+
+    #thdhome-left input{
+        width: 100% !important;
+    }
+
+    #thdhome-left button{
+        width: 70px;
+    }
+
+    #leftsidecomponentinfo{
+        display: none !important;
+    }
+
+    #right-side-component-info{
+        width: 90% !important;
+    }
+
+    .tm-site-name{
+        display: none;
+    }
+
+    .tm-site-description{
+        font-size: 10px;
+    }
+}
+/* landscape orientation */
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : landscape) {
+
+}
+/* portrait orientation */
+@media only screen and (min-width : 375px) and (max-width : 667px) and (orientation : portrait) {
+
+}

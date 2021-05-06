@@ -1,0 +1,127 @@
+@model ProdutoViewModel
+@{
+	ViewData["Title"] = "Cadastrar";
+	List<SelectListItem> StatusEstoque = ProjetoCare.Utils.DefaultValue.DefaultStrings.EstoqueDefaultProperty.ToList();
+}
+
+
+<section style="width:100%;display:flex;justify-content:center;flex-direction:column;align-items:center; background-color:gray; ">
+
+@* TÍTULO *@
+
+<div class="container" style="background-color: #007bff; color:white; width:80%; margin-top:15px;;margin-bottom:15px;height:40px;display:flex;justify-content:center; align-items:center;" >
+    <p style="margin: 0px;" >Cadastro de produto</p>
+</div>
+
+@* FIM DO TÍTULO *@
+
+
+@* CORPO DA PÁGINA *@
+<form method="POST" asp-action="cadastrar" enctype="multipart/form-data" style="height:940px;width:80%; background-color:white; margin-bottom:15px;padding:5px;">
+
+
+
+	<div style="height:70px; width:100%; display:flex; justify-content:center; align-items:center;">
+		<div style="width:45%;">
+			<i class="fas fa-box-open" style="margin-right: 3px;"></i>  <input style="height: 30px;margin:3px; width:85%;padding:5px;" asp-for="@Model.NomeProduto" placeholder="Nome do produto" type="text" />
+			<span asp-validation-for="NomeProduto" class="text-danger"></span>
+
+		</div>
+
+		<div style="width:45%;">
+			<i class="fas fa-paperclip"></i>
+			<select asp-items="@ViewBag.Categorias" asp-for="IdCategoria" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:90%; height:90%;" id="inlineFormCustomSelectPref">
+			</select>
+			<span asp-validation-for="IdCategoria" class="text-danger"></span>
+		</div>
+
+	</div>
+
+	<div style="height:150px; width:100%; display:flex; justify-content:center; align-items:center; flex-direction:column;">
+		<h5>Descrição do produto</h5>
+		<textarea asp-for="@Model.Descricao" style="resize: none; width:85%; height:120px; !important; font-size:14px; padding:10px;"></textarea>
+		<span asp-validation-for="Descricao" class="text-danger"></span>
+	</div>
+
+	<div style="height:150px; width:100%; display:flex; justify-content:center; align-items:center; flex-direction:column;">
+		<h3 style="margin: 10px;">Imagens</h3>
+		<div style="width:85%;margin-top:10px;display:flex;justify-content:space-between;">
+			<input asp-for="@Model.Imagem1" placeholder="Imagem 1" id="customFile" style="width: 30%; text-align:center;height:40px; background-color:gray; border:2px solid black;">
+			<input asp-for="@Model.Imagem2" placeholder="Imagem 2" id="customFile" style="width: 30%; text-align:center; height:40px; background-color:gray; border:2px solid black;">
+			<input asp-for="@Model.Imagem3" placeholder="Imagem 3" id="customFile" style="width: 30%; text-align:center; height:40px; background-color:gray; border:2px solid black;">
+		</div>
+	</div>
+
+
+	<hr style="width: 100%; height:40px; color:darkblue; background-color:#007bff;">
+
+	<div style="height:100px; width:100%; display:flex; justify-content:center;">
+		<div style="width:40%;">
+			<label>Preço</label>
+			<i class="fas fa-money-bill-wave"></i>
+			<input asp-for="@Model.Preco" style="height: 30px;margin:3px; width:50%; text-align:center;border:1px solid black;border-radius:4px;" placeholder="R$ 0.00" type="number" min="1" step="any" />
+			
+			<span asp-validation-for="Preco" class="text-danger"></span>
+		</div>
+		<div style="width:40%;">
+			<label>Quantidade</label>
+			<input asp-for="@Model.Quantidade" style="height: 30px;margin:3px; width:50%; text-align:center;" placeholder="00" type="number" />
+			<span asp-validation-for="Quantidade" class="text-danger"></span>
+		</div>
+	</div>
+
+	<hr style="width: 100%; height:40px; color:darkblue; background-color:#007bff;">
+
+
+	<div style="height:150px; width:100%; display:flex; justify-content:center;">
+		<span asp-validation-for="Largura" class="text-danger"></span>
+		<span asp-validation-for="Comprimento" class="text-danger"></span>
+		<span asp-validation-for="Altura" class="text-danger"></span>
+
+		<div style="width:20%;">
+			<label> Largura (CM) </label>
+			<input asp-for="@Model.Largura" style="height: 30px;margin:3px; width:50%; text-align:center;" type="number" />
+		</div>
+		<div style="width:20%;">
+			<label> Comprimento (CM) </label>
+			<input asp-for="@Model.Comprimento" style="height: 30px;margin:3px; width:50%; text-align:center;" type="number" />
+		</div>
+		<div style="width:20%;">
+			<label> Altura (CM)</label>
+			<input asp-for="@Model.Altura" style="height: 30px;margin:3px; width:50%; text-align:center;" type="number" />
+		</div>
+		<div style="width:20%;">
+			<label> Peso (Gramas)</label>
+			<input asp-for="@Model.Peso" style="height: 30px;margin:3px; width:50%; text-align:center;" type="number" />
+		</div>
+		
+	</div>
+	
+
+	<div class="container-fluid" style="display:flex;  margin-bottom:10px;justify-content:center; width:100%; height:50px; align-items:center;">
+		
+		<select asp-items="@StatusEstoque.ToList()" asp-for="@Model.EstoqueStatus" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:90%; height:90%;" id="inlineFormCustomSelectPref">
+			<option value=""></option>
+		</select>
+	</div>
+
+
+	<div style="height:150px; width:100%; display:flex; justify-content:center;">
+		<button id="#btn-cd" type="submit" style=" height:70px; width:160px;border:none; background-color:#007bff; color:white;border-radius:5px;">Cadastrar produto</button>
+	</div>
+
+</form>
+
+</section>
+
+<style>
+    #btn-cd:hover{
+        background-color:darkred;
+    }
+    span{
+        font-size:9px;
+    }
+</style>
+
+
+@* FIM CORPO DA PÁGINA *@

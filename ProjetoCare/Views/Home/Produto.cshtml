@@ -1,0 +1,73 @@
+@inject UserSession usr;
+@inject ShoppingCart sp;
+
+@model Produto
+
+
+@{
+	ViewData["Title"] = "Produto";
+	UserInfoViewModel user = usr.GetUser();
+	var list = sp.Search().ToList();
+	int total = 0;
+	foreach (var item in list)
+	{
+		total += item.QuantidadeCarrinho;
+	}
+}
+
+
+@if (user != null)
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@total" Param-Nome="@user.Nome" render-mode="Static" />
+}
+else
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@total" render-mode="Static" />
+}
+
+<section class="row tm-item-preview">
+	<div class="col-md-6 col-sm-12 mb-md-0 mb-5">
+		@if (Model.Imagens.Count > 0)
+		{
+			<img src="https://localhost:5001/pdts/@Model.Imagens.First().ImagemCaminho" alt="Image" class="img-fluid tm-img-center-sm">
+		}
+		else
+		{
+			<img src="https://localhost:5001/pdts/padraopd.png" alt="Image" class="img-fluid tm-img-center-sm">
+		}
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<h2 class="tm-blue-text tm-margin-b-p">@Model.NomeProduto</h2>
+		<p class="tm-margin-b-p">@Model.Descricao</p>
+		<p class="tm-blue-text tm-margin-b-s">Categoria: <a asp-action="index" asp-route-categoria="@Model.IdCategoriaNavigation.NomeCategoria" class="tm-blue-text">@Model.IdCategoriaNavigation.NomeCategoria</a></p>
+		<p class="tm-black-text tm-margin-b-s">Preço: @Model.Preco.ToString("C")</p>
+
+		@if (list.FirstOrDefault(a => a.IdProduto == Model.IdProduto) != null)
+		{
+			<p class="text-success" >Você já adicionou este produto á sua cesta</p>
+		}
+		else
+		{
+			<a asp-action="addtocart" asp-route-id="@Model.IdProduto" class="tm-btn tm-btn-gray tm-margin-r-20 tm-margin-b-s" style="margin-top:60px;display:flex;justify-content:center;align-items:center; color:black;">
+				ADICIONAR
+				<img src="https://localhost:5001/img/cesta.png" style="width: 40px;" />
+			</a>
+		}
+
+	</div>
+</section>
+
+<div class="tm-gallery no-pad-b">
+	<div class="row">
+		@if (Model.Imagens.Count > 0)
+		{
+			foreach (var item in Model.Imagens.ToList())
+			{
+				<a href="https://localhost:5001/pdts/@item.ImagemCaminho" target="_blank" class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item mb-5">
+					<img src="https://localhost:5001/pdts/@item.ImagemCaminho" alt="Image" class="img-fluid tm-img-center">
+				</a>
+			}
+		}
+
+	</div>
+</div>     

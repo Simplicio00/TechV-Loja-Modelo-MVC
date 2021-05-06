@@ -1,0 +1,217 @@
+
+.adm-home{
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    padding: 10px;
+    
+}
+
+.card{
+    margin: 3px;
+}
+
+/* .ftclass{
+    background-color: darkslategray !important; 
+} */
+
+body{
+    /* background-image: url(https://i.pinimg.com/originals/8d/2d/4a/8d2d4a3af15e1bc20bf87f6c9c704378.jpg); */
+    background-image: url(https://localhost:5001/regular/img/shelf-bg.jpg);
+    background-size: cover;
+}
+
+
+
+
+/* 
+        MODAL
+*/
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 406px !important;
+        top: 31px !important;
+        width: 40%; /* Full width */
+        height: 70%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      .modal {
+        color: black;
+      }
+      
+      /* Modal Content/Box */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+
+
+      /* FIM MODAL */
+
+
+
+/* TELA DE CATEGORIAS */
+
+.cd-fluid{
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  background-size: cover;
+}
+
+.cd-fluid-2{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cd-fluid-3{
+  width: 50%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  opacity: 0.9;
+  color: black;
+  border-radius: 20px;
+
+}
+
+.cd-fluid-3 input{
+  width: 60%;
+  height: 40px;
+  text-align: center;
+}
+
+.cd-fluid-3 a{
+  margin: 10px;
+}
+
+.cd-fluid-3 span{
+  width: 30px;
+}
+
+
+/* COMPONENTE INPUT GROUP */
+
+.mb-3{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.mb-3 input{
+  width: 60%;
+  height: 50px;
+  margin-right: 3px;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.mb-3 input:hover{
+  border: 3px solid black;
+}
+
+.mb-3 button{
+  height: 50px;
+  font-size: 17px;
+}
+
+/* FIM COMPONENTE INPUT GROUP */
+
+
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  padding: 10px;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+#mydiv textarea{
+	resize: none;
+	width: 300px;
+	padding: 5px;
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .cd-fluid{
+        flex-flow:column-reverse;
+        padding:10px;
+        height:700px;
+    }
+
+    .cd-fluid-2{
+        width:90%;
+    }
+
+    .cd-fluid-3{
+        width:90%;
+    }
+
+}
+
+
+/* TELA DE CATEGORIAS FIM */
+
+
+
+.span-categoria{
+  background-color:white;
+  position: relative;
+  left: 296px;
+  top: 120px;
+}
+
+footer{
+  margin-top: 70px;
+  display: block !important;
+  height: 90px;
+}

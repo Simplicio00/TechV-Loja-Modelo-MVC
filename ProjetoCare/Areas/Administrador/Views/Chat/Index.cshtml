@@ -1,0 +1,16 @@
+﻿@model List<UserInfoViewModel>
+
+@{
+	ViewData["title"] = "user";
+}
+
+
+<section style="width: 100%; height:100%;opacity:0.9;display:flex;justify-content:start;padding:10px;flex-flow:wrap;">
+	@foreach (var item in Model.ToList())
+	{
+		<div style="height: 40px; background-color:darkblue;margin:5px; background-color:white;padding:5px;display:flex;justify-content:center;" >
+			<a asp-action="get" asp-controller="chat" asp-route-id="@item.Id" ><p>@item.Nome</p></a>
+		</div>	
+	}
+	
+</section>

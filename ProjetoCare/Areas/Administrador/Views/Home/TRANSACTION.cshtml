@@ -1,0 +1,35 @@
+﻿@model HistoricoCompra
+
+@{
+	ViewData["title"] = "Transaction";
+}
+
+
+<form method="post" asp-action="transactionchange" asp-controller="home" style="width: 100%;height:500px;display:flex; background-color:white; opacity:0.9;">
+	<div style="width: 50%;height:500px; display:flex;justify-content:center;align-items:center;flex-direction:column;">
+		<input type="hidden" asp-for="@Model.Codigo" />
+		<p><b>ID:</b> @Model.Codigo</p>
+		<p><b>Data:</b> @Model.DataEmissao</p>
+		<p><b>Requisitante:</b> @Model.IdUsuarioNavigation.Nome</p>
+		<p><b>CEP:</b> @Model.IdUsuarioNavigation.CEP</p>
+		<p><b>E-Mail:</b> @Model.IdUsuarioNavigation.Email</p>
+		<p><b>Valor:</b> @Model.Total.ToString("C")</p>
+		
+		<p>
+			<select asp-items="@GenericList.StatusCompra" asp-for="@Model.Status" class="custom-select my-1 mr-sm-2" style="font-size: 10px; width:140px; height:30px;" id="inlineFormCustomSelectPref">
+			</select>
+			<button type="submit" style="width: 130px;height:30px;border:none;">Alterar</button>
+		</p>
+
+	</div>
+
+	<div style="width: 50%;height:100%; display:flex;justify-content:center;align-items:center;flex-direction:column;">
+		<h3>Produtos requisitados</h3>
+		<ul>
+			@foreach (var item in @Model.Registros.ToList())
+			{
+				<li>@item.Produto</li>			
+			}
+		</ul>
+	</div>
+</form>

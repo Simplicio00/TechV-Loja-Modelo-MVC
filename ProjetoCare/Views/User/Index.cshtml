@@ -1,0 +1,56 @@
+﻿@model UserLoginViewModel
+
+@{
+	ViewData["Title"] = "Login";
+}
+
+<section style="width:100%; height:500px;">
+	<form method="POST" asp-action="index" asp-controller="user"  style="width: 100%; height:100%;display:flex;justify-content:center; background-color:gray; flex-flow:column;align-items:center;color:white;">
+		
+		<h3>ENTRAR</h3>
+		
+		<input type="email" asp-for="@Model.Email" placeholder="Email" style="width: 300px;height:35px; margin-top:10px;border-radius:5px;text-align:center;border:none;" />
+		<span class="alert-danger" asp-validation-for="@Model.Email" style="margin:10px;font-size:13px;"></span>
+
+		<input type="password" asp-for="@Model.Senha" placeholder="senha" style="width: 300px;height:35px; margin-top:10px;border-radius:5px;text-align:center;border:none;" />
+		<span class="alert-danger" asp-validation-for="@Model.Senha" style="margin:10px;font-size:13px;"></span>
+		
+		@if (TempData["MSGE"] != null)
+			{
+				<span class="alert-danger" style="margin:13px;">@TempData["MSGE"].ToString()</span>
+			}
+		<button style="margin-top: 10px; height:30px; width:90px;border:none;background-color:black;color:white;">Entrar</button>
+
+		<p style="color: white;margin-top:10px;">Não possui cadastro? <a asp-action="cadastrar" asp-controller="user" style="text-align:center;font-size:14px;color:white;"> Cadastrar </a> </p> 
+	</form>
+</section>
+
+
+@* <div class="container-fluid" style="display:flex; align-items:center; width:100%; height:25em; padding:1em; ">
+	<div class="col-md-4 offset-md-4">
+
+		<form method="post" asp-action="index" asp-controller="user" class="card text-center card  bg-default mb-3" style="background-color:white;border-top:solid 1px black;border-left:solid 1px black; border-right:solid 1px black;box-shadow:10px 10px black">
+			<div class="card-header" style="margin: 1em 0em 1em 0em;"><h3 style="color:black">ENTRAR</h3></div>
+			<a asp-action="cadastrar" asp-controller="user" style="text-align:center;font-size:14px;"> Cadastrar </a>
+			<div class="card-body">
+				<input type="email" asp-for="@Model.Email" id="userName" class="form-control input-sm chat-input" placeholder="Email" />
+				<span class="alert-danger" asp-validation-for="@Model.Email" style="margin:10px;font-size:10px;"></span>
+				</br>
+				<input type="password" asp-for="@Model.Senha" id="userPassword" class="form-control input-sm chat-input" placeholder="Senha" />
+				<span class="alert-danger" asp-validation-for="@Model.Senha" style="margin:10px;font-size:10px;"></span>
+			</div>
+
+			<br />
+
+			@if (TempData["MSGE"] != null)
+			{
+				<span class="alert-danger" style="margin:10px;">@TempData["MSGE"].ToString()</span>
+			}
+
+			<div class="card-footer text-muted" style="margin-top:1em;background-color:darkblue;">
+				<button type="submit" class="btn btn-default" style="color:white;">Entrar</button>
+			</div>
+		</form>
+	</div>
+
+</div> *@

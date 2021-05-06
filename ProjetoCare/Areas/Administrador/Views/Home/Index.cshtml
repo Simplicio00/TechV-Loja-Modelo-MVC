@@ -1,0 +1,24 @@
+﻿@model List<HistoricoCompra>;
+@{
+	ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid adm-home">
+	
+	@foreach (var item in Model.ToList())
+	{
+
+		<div class="card text-white bg-success mb-3" style="max-width: 18rem; z-index:100;background-color:white;">
+				<div class="card-header">@item.DataEmissao</div>
+				<div class="card-body">
+				<a asp-action="transaction" asp-route-codigo="@item.Codigo" asp-controller="home" >
+					<h5 class="card-title" style="color: white;" >@item.Codigo</h5>
+				</a>
+
+					<p class="card-text"> <b>REQUISITANTE:</b> @item.IdUsuarioNavigation.Nome</p>
+				</div>
+		</div>
+	}
+	
+
+</div>

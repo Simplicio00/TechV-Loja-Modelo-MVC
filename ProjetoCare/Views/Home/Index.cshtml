@@ -1,0 +1,117 @@
+﻿@inject ShoppingCart sp;
+@inject UserSession usr;
+@model List<Produto>
+
+@{
+	ViewData["Title"] = "Home Page";
+
+	UserInfoViewModel user = usr.GetUser();
+	Pager pager = new Pager();
+	int pageNO = 0;
+	if (ViewBag.Pager != null)
+	{
+		pager = ViewBag.Pager;
+		pageNO = pager.CurrentPage;
+	}
+
+	var price = Context.Request.Query["prices"].ToString();
+	var categoria = Context.Request.Query["categoria"].ToString();
+	var pesquisa = Context.Request.Query["pesquisa"].ToString();
+	var priceFilters = ProjetoCare.Utils.DefaultValue.GenericList.FilterDefaultPrices.ToList();
+
+	int totalCarrinho = 0;
+
+	foreach (var item in sp.Search().ToList())
+	{
+		totalCarrinho += item.QuantidadeCarrinho;
+	}
+
+}
+
+@if ( user != null)
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@totalCarrinho" Param-Nome="@user.Nome" render-mode="Static" />
+}
+else
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@totalCarrinho" render-mode="Static" />
+}
+
+<section class="tm-margin-b-l">
+	<div id="thdhome-upper" style="width: 100%; height:100px; display:flex;justify-content:center;align-items:center;">
+		<form id="thdhome-left" style="width: 50%; height: 100px;display:flex;align-items:center;" method="get" asp-action="index">
+			<component type="typeof(InputGroupComponent)" action="index" render-mode="Static" />
+			<button type="submit" style="border: none; background-color:gray; color:white; width:20%; height:40px;margin-left:5px;">Buscar</button>
+		</form>
+
+
+
+		<form id="thdhome-right" asp-action="index" method="get" style="width: 50%; height:100%;display:flex;align-items:center; padding:10px;">
+			<select asp-items="@ViewBag.Categorias" asp-for="@categoria" name="categoria" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:40%; height:40px;" id="inlineFormCustomSelectPref">
+				<option value="">Categorias</option>
+			</select>
+			<select asp-items="@priceFilters" asp-for="@price" name="prices" class="custom-select my-1 mr-sm-2" style="height: 30px; font-size: 10px; width:40%; height:40px;" id="inlineFormCustomSelectPref">
+				<option value="">Faixa de preço</option>
+			</select>
+
+			<button type="submit" style="border: none; background-color:gray; color:white; width:20%; height:40px;"> Filtrar </button>
+
+		</form>
+	</div>
+
+
+	<p>Produtos encontrados: @TempData["MSGCTG"].ToString()</p>
+
+
+
+
+	<div class="tm-gallery">
+		<div class="row">
+
+			@foreach (var produto in Model.ToList())
+			{
+				<figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+					<a asp-action="produto" asp-route-id="@produto.IdProduto">
+						<div class="tm-gallery-item-overlay">
+
+							@if (produto.Imagens.Count > 0)
+							{
+								<img src="https://localhost:5001/pdts/@produto.Imagens.First().ImagemCaminho" alt="Image" class="img-fluid tm-img-center">
+							}
+							else
+							{
+								<img style="background-color: gray;" src="https://localhost:5001/pdts/padraopd.png" alt="Image" class="img-fluid tm-img-center">
+							}
+						</div>
+						<p style="background-color: gray;color:white;font-size:14px;" class="tm-figcaption">@produto.NomeProduto</p>
+
+					</a>
+
+					<p style="background-color: yellow;font-size:14px; height:40px; width:90px;position:relative;bottom:310px;display:flex;align-items:center;justify-content:center;">@produto.Preco.ToString("C")</p>
+
+					<button style="position:relative; bottom:42px; width:241px; background-color:darkblue; color:white;border:none;">
+						@* <img src="https://localhost:5001/pdts/carrinho.png" style="width: 30px;" />  *@
+						Adicionar á cesta
+					</button>
+
+				</figure>
+			}
+
+		</div>
+	</div>
+
+	<nav class="tm-gallery-nav">
+		@if (pager.TotalPages > 0)
+		{
+			<ul class="nav justify-content-center">
+				@for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+				{
+					<li class="nav-item">
+						<a asp-route-page="@pge" asp-route-pesquisa="@pesquisa" asp-route-categoria="@categoria" asp-route-prices="@price" asp-action="index" class="nav-link @(pge == pager.CurrentPage ? "active" : "")">@pge</a>
+					</li>
+				}
+			</ul>
+		}
+
+	</nav>
+</section>

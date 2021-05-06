@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0-beta6</Version>
+    <Authors>Boleto2Net, Tagliatti</Authors>
+    <PackageLicenseUrl>https://github.com/Tagliatti/BoletoNetCore/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Tagliatti/BoletoNetCore/</PackageProjectUrl>
+    <PackageIconUrl>https://i.imgur.com/Wbxjyit.png</PackageIconUrl>
+    <Description>BoletoNetCore é um componente desenvolvido em C# e .NET Core para Emissão e Impressão de Boletos Bancários, Geração de Arquivo de Remessa e Leitura do Arquivo de Retorno.
+      * Banrisul - Carteira 1
+      * Bradesco - Carteira 09
+      * Brasil - Carteira 17 (Variações 019 027)
+      * Caixa Econômica Federal - Carteira SIG14
+      * Itau - Carteira 109, 112
+      * Santander - Carteira 101
+      * Sicoob - Carteira 1-01</Description>
+    <PackageTags>boleto, remessa, cnab</PackageTags>
+    <Copyright>Boleto2Net, Tagliatti</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/Tagliatti/BoletoNetCore/</RepositoryUrl>
+    <PackageReleaseNotes>Atualmente apenas a Emissão e Impressão de Boletos Bancários está funcionando como pode ser verificado nos testes.</PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BoletoImpressao/BoletoNet.css" />
+    <EmbeddedResource Include="BoletoImpressao/BoletoNetPDF.css" />
+    <EmbeddedResource Include="Imagens/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NReco.PdfGenerator.LT" Version="1.1.15" />
+    <PackageReference Include="PDF.Core" Version="4.6.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Html.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Html.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Html.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Html.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

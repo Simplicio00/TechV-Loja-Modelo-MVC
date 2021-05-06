@@ -1,0 +1,81 @@
+﻿@inject UserSession adm
+
+@model UserInfoViewModel
+
+@{
+	ViewData["title"] = $"{Model.Nome}";
+	var user = adm.GetAdmin();
+}
+
+
+<div class="container" style="display:flex;justify-content:center; width:100%;display:flex;justify-content:center;flex-direction:column;align-items:center;">
+	<textarea id="messageList" disabled style="width:70%; height:300px;resize:none;margin-top:20px;padding:10px;background-color:white;">
+
+	</textarea>
+
+
+
+
+	<input id="idchannel" value="@Model.CanalId" hidden type="text" />
+
+	<input id="username" value="@user.Nome" hidden type="text" />
+
+	<br />
+
+
+	<label>Mensagem</label>
+	<input type="text" id="usermessage" style="height:30px;width:50%;" />
+	<input type="button" id="btnsendmessage" value="Send message" style="width: 50%;background-color:black;color:white;border:none;" />
+
+
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+
+<script type="text/javascript">
+	//Buscando o endereço do signalR
+	var connection = new signalR.HubConnectionBuilder().withUrl("/chat/").build();
+
+	document.getElementById("btnsendmessage").disabled = true;
+
+	connection.on("ReceiveMessage", function (user, message) {
+		var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		var encodeMsg = user + " : " + msg;
+
+		var lista = document.getElementById("messageList")
+
+		lista.textContent += " \n " + encodeMsg
+
+		lista.scrollTop = lista.scrollHeight;
+
+
+	});
+	
+	connection.start().then(function () {
+		document.getElementById("btnsendmessage").disabled = false;
+	}).catch(function (e) {
+		return console.error(e)
+	});
+
+	//Ao clicar no botão
+	document.getElementById("btnsendmessage").addEventListener("click", function (eve) {
+
+		var user = document.getElementById("username").value;
+		var message = document.getElementById("usermessage").value;
+		var channel = document.getElementById("idchannel").value;
+
+ 		document.getElementById("usermessage").value = ""
+
+		var lista = document.getElementById("messageList"); 
+
+		lista.scrollTop = lista.scrollHeight;
+
+		connection.invoke("SendMessage", channel, user, message).catch(function (e) {
+			return console.error(e);
+		});
+		eve.preventDefault();
+	});
+</script>

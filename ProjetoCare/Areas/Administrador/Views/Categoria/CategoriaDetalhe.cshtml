@@ -1,0 +1,86 @@
+﻿@model Categoria
+@{
+	ViewData["Title"] = "CategoriaDetalhe";
+}
+
+
+	<div class="container-fluid cd-fluid">
+		<div class="cd-fluid-2">
+
+			<div id="mydiv">
+				<div id="mydivheader">Listagem de produtos</div>
+				@foreach (var item in Model.Produto.ToList())
+				{
+					<p style="margin-bottom: 5px;"><b>@item.NomeProduto</b></p>
+					<textarea disabled>@item.Descricao</textarea>
+				}
+			</div>
+
+		</div>
+
+			@if (TempData["MSG_1"] != null)
+			{
+				<span style="background-color:white; text-align:center" class="text-success ">@TempData["MSG_1"].ToString()</span>
+				<br />
+			}
+
+			@if (TempData["MSG_2"] != null)
+			{
+				<span style="background-color:white; text-align:center;" class="text-danger ">@TempData["MSG_2"].ToString()</span>
+				<br />
+			}
+
+		<form class="cd-fluid-3" method="post" asp-action="categoriaDetalhe">
+			<input type="hidden" asp-for="@Model.IdCategoria" />
+			<div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-paperclip" aria-hidden="true"></span></div>
+			<input type="text" asp-for="@Model.NomeCategoria" value="@Model.NomeCategoria" />
+			<button type="submit" class="btn btn-primary"> Alterar </button>
+		</form>
+
+	</div>
+
+
+<script>
+	dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>

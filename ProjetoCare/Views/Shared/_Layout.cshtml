@@ -1,0 +1,115 @@
+﻿@inject UserSession user
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - TechV </title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+	<link rel="stylesheet" href="https://localhost:5001/regular/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://localhost:5001/regular/css/bootstrap.min.css">                                      <!-- Bootstrap style -->
+	<link rel="stylesheet" href="https://localhost:5001/regular/css/tooplate-style.css">
+	<link href="~/css/nprogress.css" rel="stylesheet" />
+	<link rel="stylesheet" href="~/css/responsivo.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container">
+		<header class="tm-site-header">
+			<h1 class="tm-site-name">
+				
+				TECH VENDAS MODELO DE COMÉRCIO</h1>
+			<p class="tm-site-description">  
+				<img class="mr-2" width="200" src="https://localhost:5001/img/logo1.png">
+
+				Venha conhecer a diversidade de produtos da nossa loja!!</p>
+
+			<nav class="navbar navbar-expand-md tm-main-nav-container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tmMainNav" aria-controls="tmMainNav" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fa fa-bars"></i>
+				</button>
+
+				<div class="collapse navbar-collapse tm-main-nav" id="tmMainNav">
+					<ul class="nav nav-fill tm-main-nav-ul">
+						<li class="nav-item"><a class="nav-link @(Context.Request.Path.Value.ToString() == "/" ? "active" : "" ) " asp-controller="home" asp-action="index">PRODUTOS</a></li>
+						@if (user.GetUser() != null)
+						{
+							<li class="nav-item"><a class="nav-link @(Context.Request.Path.Value.ToString() == "/perfil" ? "active" : "" ) " asp-action="perfil" asp-controller="user">PERFIL</a></li>
+						}
+						else
+						{
+							<li class="nav-item"><a class="nav-link @(Context.Request.Path.Value.ToString() == "/login" ? "active" : "" ) " asp-action="index" asp-controller="user">ENTRAR</a></li>
+						}
+						<li class="nav-item"><a class="nav-link" href="#">FALE CONOSCO</a></li>
+					</ul>
+				</div>
+			</nav>
+
+		</header>
+
+		<div class="tm-main-content" >
+			@RenderBody()
+
+		</div>
+
+		<footer class="dbxload" style="border-top:solid 5px black; width:100%; height:200px; display:flex; align-items:center; background-color:white;">
+			<div style="width: 33%;display:flex;justify-content:start;">
+				<img class="mr-2" width="150" src="https://localhost:5001/img/logo1.png">
+			</div>
+
+			<div style="width: 33%; display:flex;justify-content:flex-end; flex-flow:column;font-size:15px;">
+				<p><b>TECH VENDAS LOJA MODELO - @DateTime.Now.Year </b></p>
+
+				<p>Telefone: 1939924454</p>
+				<p>Email: modelo@email.com</p>
+				<p>SP, São Paulo</p>
+			</div>
+
+			<div style="width: 33%;display:flex;justify-content:flex-end;">
+				<img class="mr-2"  src="https://localhost:5001/img/pg.png">
+			</div>
+
+		</footer>
+	</div>
+
+
+
+	<!-- load JS files -->
+	<script src="js/nprogress.js"></script>
+	<script src="js/jquery-1.11.3.min.js"></script>         <!-- jQuery (https://jquery.com/download/) -->
+	<script src="js/popper.min.js"></script>                <!-- Popper (https://popper.js.org/) -->
+	<script src="js/bootstrap.min.js"></script>             <!-- Bootstrap (https://getbootstrap.com/) -->
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script>
+		$('.dbxload').show();
+		$('.version').text(NProgress.version);
+		NProgress.start();
+		var interval = setInterval(function () { NProgress.inc() }, 8000);
+		$(window).on('load', function () {
+			clearInterval(interval);
+			NProgress.done();
+		})
+		$(window).on('unload', function () {
+			NProgress.start();
+		})
+		$(window).on('beforeunload', function () {
+			NProgress.start();
+		})
+	</script>
+
+	@RenderSection("Scripts", required: false)
+</body>
+
+
+
+
+
+
+    
+</html>

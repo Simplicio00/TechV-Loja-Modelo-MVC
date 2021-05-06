@@ -1,0 +1,106 @@
+﻿@inject UserSession usr;
+@inject ShoppingCart sp;
+@{
+	ViewData["Title"] = "Fale conosco";
+	UserInfoViewModel user = usr.GetUser();
+	int total = 0;
+	foreach (var item in sp.Search().ToList())
+	{
+		total += item.QuantidadeCarrinho;
+	}
+}
+
+
+
+@if (user != null)
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@total" Param-Nome="@user.Nome" render-mode="Static" />
+}
+else
+{
+	<component type="typeof(CartInfoComponent)" Param-Valor="@total" render-mode="Static" />
+}
+
+
+
+<section style="width: 100%;display: flex; height:100%; justify-content: center;align-items: center;">
+
+	<component type="typeof(StatusSideComponent)" Param-Nome="@user.Nome" Param-Email="@user.Email" Param-CEP="@user.CEP" render-mode="Static" />
+
+
+	<div style="width:60%;margin-left:10px;height:541px;display: flex;flex-flow: column;align-items: center; justify-content: center;background-color:dimgray;">
+
+		@* <div style="display:flex;align-items:center;justify-content:center;position:absolute;top:667px;left:520px;padding:10px;">
+			<i class="fas fa-folder"></i><a style="margin-left:10px;" asp-action="perfil"> PERFIL /</a> <a asp-action="chat" style="margin-left:5px;"> FALE CONOSCO </a>
+		</div> *@
+
+		<div style="display:flex;align-items:center;justify-content:center;padding:10px;">
+			<i class="fas fa-folder"></i><a style="margin-left:10px;color:white;" asp-action="perfil"> PERFIL /</a> <a asp-action="chat" style="margin-left:5px;color:white;"> FALE CONOSCO </a>
+		</div>
+
+
+		<textarea id="messageList" disabled style="width:90%; height:300px;resize:none;margin-top:20px;padding:10px;background-color:white;">
+
+		</textarea>
+
+
+		<input id="idchannel" value="@user.CanalId" hidden type="text" />
+
+		<input id="username" value="@user.Nome" hidden type="text" />
+
+		<input type="text" id="usermessage" style="height:30px;width:90%;margin-top:10px;" />
+		<input type="button" id="btnsendmessage" value="Send message" style="width: 90%;background-color:black;color:white;border:none;" />
+
+
+	</div>
+
+</section>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+
+<script type="text/javascript">
+	//Buscando o endereço do signalR
+	var connection = new signalR.HubConnectionBuilder().withUrl("/chat/").build();
+
+	document.getElementById("btnsendmessage").disabled = true;
+
+	connection.on("ReceiveMessage", function (user, message) {
+		var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+		var encodeMsg = user + " : " + msg;
+
+		document.getElementById("messageList").textContent += " \n " + encodeMsg
+
+		var lista = document.getElementById("messageList"); 
+
+		lista.scrollTop = lista.scrollHeight;
+
+	});
+	connection.start().then(function () {
+		document.getElementById("btnsendmessage").disabled = false;
+	}).catch(function (e) {
+		return console.error(e)
+	});
+
+	//Ao clicar no botão
+	document.getElementById("btnsendmessage").addEventListener("click", function (eve) {
+
+		var user = document.getElementById("username").value;
+		var message = document.getElementById("usermessage").value;
+		var channel = document.getElementById("idchannel").value;
+
+		document.getElementById("usermessage").value = ""
+
+		var lista = document.getElementById("messageList"); 
+
+		lista.scrollTop = lista.scrollHeight;
+		
+		connection.invoke("SendMessage", channel, user, message).catch(function (e) {
+			return console.error(e);
+		});
+		eve.preventDefault();
+	});
+</script>

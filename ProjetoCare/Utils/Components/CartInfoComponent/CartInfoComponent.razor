@@ -1,0 +1,27 @@
+﻿<div id="cartinfo" style="display: flex; justify-content:center;align-items:center;align-content:center; padding:5px;">
+		<a href="https://localhost:5001/cesta"  style="margin-left: 10px; height:30px; font-size:11px;width:150px;display:flex;align-items:center;justify-content:center;" class="tm-btn tm-btn-blue">Minha cesta</a>
+		<img src="https://localhost:5001/img/cesta.png" style="width: 50px; cursor:pointer;" />
+		 <p> Produtos adicionados:  @Valor </p> 
+	
+
+	<div style="width:50%;display:flex; padding:10px;align-items:center; justify-content:flex-end; font-size:15px;">
+		@if (Nome != null)
+		{
+			<p> Olá @Nome </p> <a id="logoutbtn" style="margin-left: 10px;cursor:pointer;" >a<i class="fas fa-sign-out-alt"></i></a>
+		}
+		else
+		{
+			<p>Faça login para prosseguir com a sua compra</p> <a href="#" style="margin-left: 10px;"><i style="font-size: 30px;" class="fas fa-door-open"></i></a>
+		}
+	</div>
+
+</div>
+<hr style="width: 100%; color:gray; height:30px;">
+
+@code {
+	[Parameter]
+	public int Valor { get; set; }
+
+	[Parameter]
+	public string Nome { get; set; }
+}

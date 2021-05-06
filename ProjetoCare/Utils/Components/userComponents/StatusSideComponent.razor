@@ -1,0 +1,24 @@
+<div id="leftsidecomponentinfo" style="width: 30%;height: 600px;display: flex; flex-direction: column; justify-content: center;align-items: center;">
+
+		<div style="width:90%; height:30%;background-color: white;display: flex;align-items: center;justify-content: center;border: black solid 1px;font-size:12px;">
+			<p><b>Nome: </b> @Nome </p>
+		</div>
+		<div style="width:90%; height:30%;background-color: white;display: flex;align-items: center;justify-content: center;border: black solid 1px;font-size:12px;">
+			<p><b>E-Mail: </b> @Email  </p>
+		</div>
+		<div style="width:90%; height:30%;background-color: white;display: flex;align-items: center;justify-content: center;border: black solid 1px;font-size:12px;">
+			<p><b> CEP: </b> @CEP </p>
+		</div>
+</div>
+
+@code {
+    [Parameter]
+    public string Nome { get; set; }
+
+    [Parameter]
+    public string Email { get; set; }
+
+    [Parameter]
+    public string CEP { get; set; }
+    
+}
